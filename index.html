@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FREE V-BUCKS GENERATOR</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #101018;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+header {
+    background: linear-gradient(135deg, #7138ff, #a000ff);
+    padding: 30px 15px;
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 0 0 20px #7c00ff;
+}
+
+.container {
+    margin: 40px auto;
+    padding: 25px;
+    max-width: 500px;
+    background: #1c1c28;
+    border: 2px solid #853cff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #4b00ff55;
+}
+
+.vbucks {
+    font-size: 75px;
+    margin: 20px;
+}
+
+h1 {
+    color: #b78aff;
+}
+
+button {
+    background: #8b35ff;
+    color: white;
+    border: none;
+    padding: 16px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #a86aff;
+    transform: scale(1.04);
+}
+
+#output {
+    margin-top: 25px;
+    font-size: 17px;
+    min-height: 60px;
+}
+
+.bar {
+    width: 100%;
+    background: #333;
+    height: 25px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: none;
+    margin-top: 20px;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #8b35ff, #00eaff);
+    transition: width 0.3s;
+}
+
+.warning {
+    color: #ff5252;
+    font-weight: bold;
+}
+
+footer {
+    margin: 30px;
+    color: gray;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+🎮 FREE V-BUCKS GENERATOR 🎮
+</header>
+
+<div class="container">
+
+<div class="vbucks">🪙</div>
+
+<h1>10.000 GRATIS V-BUCKS!</h1>
+
+<p>
+Du wurdest ausgewählt, um 10.000 kostenlose V-Bucks zu erhalten!
+</p>
+
+<p>
+Klicke auf den Button, um deine V-Bucks zu generieren.
+</p>
+
+<button onclick="startGenerator()" id="btn">
+V-BUCKS FREISCHALTEN
+</button>
+
+<div class="bar" id="bar">
+<div class="progress" id="progress"></div>
+</div>
+
+<div id="output"></div>
+
+</div>
+
+<footer>
+Fan-Prank – keine Verbindung zu Epic Games.
+</footer>
+
+<script>
+function startGenerator() {
+    const btn = document.getElementById("btn");
+    const output = document.getElementById("output");
+    const bar = document.getElementById("bar");
+    const progress = document.getElementById("progress");
+
+    btn.disabled = true;
+    btn.innerText = "BITTE WARTEN...";
+    bar.style.display = "block";
+
+    let percent = 0;
+
+    const messages = [
+        "Verbinde mit Fortnite-Servern...",
+        "Suche nach V-Bucks...",
+        "Hacke den Battle Pass...",
+        "Installiere V-Bucks...",
+        "Prüfe dein System...",
+        "SYSTEM ÜBERPRÜFUNG..."
+    ];
+
+    const interval = setInterval(() => {
+        percent += Math.floor(Math.random() * 12) + 4;
+
+        if (percent >= 100) {
+            percent = 100;
+        }
+
+        progress.style.width = percent + "%";
+
+        output.innerHTML =
+            messages[Math.floor(Math.random() * messages.length)] +
+            "<br><br>" + percent + "% abgeschlossen";
+
+        if (percent >= 100) {
+            clearInterval(interval);
+
+            setTimeout(() => {
+                document.body.style.background = "#250000";
+
+                output.innerHTML = `
+                    <h1 class="warning">⚠ SYSTEM WARNUNG ⚠</h1>
+                    <p>V-Bucks gefunden!</p>
+                    <p>System wird überprüft...</p>
+                    <p class="warning">VIRUS ERKANNT!!!</p>
+                    <h2>😱 OH NEIN!!!</h2>
+                    <h1 style="color:lime">...SPASS 😂</h1>
+                    <p>Du hast wirklich geglaubt,
+                    du bekommst kostenlose V-Bucks?</p>
+                    <h2>KEIN VIRUS. KEINE V-BUCKS.</h2>
+                    <p>Du wurdest einfach verarscht.</p>
+                `;
+
+                btn.style.display = "none";
+            }, 1000);
+        }
+    }, 500);
+}
+</script>
+
+</body>
+</html>
